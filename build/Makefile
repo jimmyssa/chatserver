@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jimmy/jimmy/testmuduo
+CMAKE_SOURCE_DIR = /home/jimmy/jimmy/chat/chatserver
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jimmy/jimmy/testmuduo/build
+CMAKE_BINARY_DIR = /home/jimmy/jimmy/chat/chatserver/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jimmy/jimmy/testmuduo/build/CMakeFiles /home/jimmy/jimmy/testmuduo/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jimmy/jimmy/chat/chatserver/build/CMakeFiles /home/jimmy/jimmy/chat/chatserver/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jimmy/jimmy/testmuduo/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jimmy/jimmy/chat/chatserver/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,41 +117,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named server
+# Target rules for targets named ChatServer
 
 # Build rule for target.
-server: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 server
-.PHONY : server
+ChatServer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ChatServer
+.PHONY : ChatServer
 
 # fast build rule for target.
-server/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
-.PHONY : server/fast
-
-testmuduo.o: testmuduo.cpp.o
-.PHONY : testmuduo.o
-
-# target to build an object file
-testmuduo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/testmuduo.cpp.o
-.PHONY : testmuduo.cpp.o
-
-testmuduo.i: testmuduo.cpp.i
-.PHONY : testmuduo.i
-
-# target to preprocess a source file
-testmuduo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/testmuduo.cpp.i
-.PHONY : testmuduo.cpp.i
-
-testmuduo.s: testmuduo.cpp.s
-.PHONY : testmuduo.s
-
-# target to generate assembly for a file
-testmuduo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/testmuduo.cpp.s
-.PHONY : testmuduo.cpp.s
+ChatServer/fast:
+	$(MAKE) $(MAKESILENT) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/build
+.PHONY : ChatServer/fast
 
 # Help Target
 help:
@@ -161,10 +137,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... server"
-	@echo "... testmuduo.o"
-	@echo "... testmuduo.i"
-	@echo "... testmuduo.s"
+	@echo "... ChatServer"
 .PHONY : help
 
 
