@@ -2,7 +2,7 @@
 #include<functional>
 #include"json.hpp"
 #include"chatservice.hpp"
-using json=
+using json=nlohmann::json;
 ChatServer::ChatServer(EventLoop* loop,
     const InetAddress& listenAddr,//IP+port
     const string& nameArg)//服务器名字
@@ -31,19 +31,13 @@ void ChatServer::start()
 
 void ChatServer::onConnection(const TcpConnectionPtr& conn)
 {
-    if(conn->connected())//新连接
+    //客户端断开链接
+    if(!conn->connected())
     {
-        cout << conn->peerAddress().toIpPort() << " -> "
-                << conn->localAddress().toIpPort() << " state:online"
-                << endl;
+        ChatService::instance()->clientCloseException(conn);
+        conn->shutdown();
     }
-    else//断开连接
-    {
-        cout << conn->peerAddress().toIpPort() << " -> "
-                << conn->localAddress().toIpPort() << " state:offline"
-                << endl;
-        conn->shutdown();//关闭连接
-    }
+    
 }
     //专门处理用户读写事件
 void ChatServer::onMessage(const TcpConnectionPtr&conn,//连接

@@ -9,7 +9,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/jimmy/jimmy/chat/chatserver/src/server/chatserver.cpp" "src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o" "gcc" "src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o.d"
+  "/home/jimmy/jimmy/chat/chatserver/src/server/chatservice.cpp" "src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o" "gcc" "src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o.d"
+  "/home/jimmy/jimmy/chat/chatserver/src/server/db/db.cpp" "src/server/CMakeFiles/ChatServer.dir/db/db.cpp.o" "gcc" "src/server/CMakeFiles/ChatServer.dir/db/db.cpp.o.d"
   "/home/jimmy/jimmy/chat/chatserver/src/server/main.cpp" "src/server/CMakeFiles/ChatServer.dir/main.cpp.o" "gcc" "src/server/CMakeFiles/ChatServer.dir/main.cpp.o.d"
+  "/home/jimmy/jimmy/chat/chatserver/src/server/usermodel.cpp" "src/server/CMakeFiles/ChatServer.dir/usermodel.cpp.o" "gcc" "src/server/CMakeFiles/ChatServer.dir/usermodel.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

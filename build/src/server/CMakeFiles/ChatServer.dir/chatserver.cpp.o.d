@@ -331,4 +331,9 @@ src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o: \
  /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/sstream \
  /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/codecvt \
  /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
- /usr/include/c++/13/any
+ /usr/include/c++/13/any \
+ /home/jimmy/jimmy/chat/chatserver/include/server/chatservice.hpp \
+ /usr/include/c++/13/mutex /usr/include/c++/13/bits/std_mutex.h \
+ /usr/include/c++/13/bits/unique_lock.h \
+ /home/jimmy/jimmy/chat/chatserver/include/server/usermodel.hpp \
+ /home/jimmy/jimmy/chat/chatserver/include/server/user.hpp
