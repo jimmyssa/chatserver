@@ -5,3 +5,6 @@
 /home/jimmy/jimmy/chat/chatserver/build/src/server/CMakeFiles/ChatServer.dir
 /home/jimmy/jimmy/chat/chatserver/build/src/server/CMakeFiles/edit_cache.dir
 /home/jimmy/jimmy/chat/chatserver/build/src/server/CMakeFiles/rebuild_cache.dir
+/home/jimmy/jimmy/chat/chatserver/build/src/client/CMakeFiles/ChatClient.dir
+/home/jimmy/jimmy/chat/chatserver/build/src/client/CMakeFiles/edit_cache.dir
+/home/jimmy/jimmy/chat/chatserver/build/src/client/CMakeFiles/rebuild_cache.dir

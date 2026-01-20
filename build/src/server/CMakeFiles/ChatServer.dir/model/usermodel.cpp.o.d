@@ -1,8 +1,8 @@
-src/server/CMakeFiles/ChatServer.dir/usermodel.cpp.o: \
- /home/jimmy/jimmy/chat/chatserver/src/server/usermodel.cpp \
+src/server/CMakeFiles/ChatServer.dir/model/usermodel.cpp.o: \
+ /home/jimmy/jimmy/chat/chatserver/src/server/model/usermodel.cpp \
  /usr/include/stdc-predef.h \
- /home/jimmy/jimmy/chat/chatserver/include/server/usermodel.hpp \
- /home/jimmy/jimmy/chat/chatserver/include/server/user.hpp \
+ /home/jimmy/jimmy/chat/chatserver/include/server/model/usermodel.hpp \
+ /home/jimmy/jimmy/chat/chatserver/include/server/model/user.hpp \
  /usr/include/c++/13/string /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
