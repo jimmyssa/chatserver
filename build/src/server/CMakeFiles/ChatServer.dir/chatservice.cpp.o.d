@@ -1,5 +1,5 @@
 src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o: \
- /home/jimmy/jimmy/chat/chatserver/src/server/chatservice.cpp \
+ /home/jimmy/jimmy/chat/src/server/chatservice.cpp \
  /usr/include/stdc-predef.h /usr/include/muduo/base/Logging.h \
  /usr/include/muduo/base/LogStream.h \
  /usr/include/muduo/base/noncopyable.h \
@@ -122,8 +122,9 @@ src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o: \
  /usr/include/c++/13/bits/uses_allocator.h \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
  /usr/include/assert.h /usr/include/muduo/base/Timestamp.h \
- /usr/include/muduo/base/copyable.h /usr/include/boost/operators.hpp \
- /usr/include/c++/13/iterator /usr/include/c++/13/bits/stream_iterator.h \
+ /usr/include/muduo/base/copyable.h \
+ /usr/local/include/boost/operators.hpp /usr/include/c++/13/iterator \
+ /usr/include/c++/13/bits/stream_iterator.h \
  /usr/include/c++/13/bits/streambuf_iterator.h \
  /usr/include/c++/13/streambuf /usr/include/c++/13/bits/ios_base.h \
  /usr/include/c++/13/ext/atomicity.h \
@@ -150,29 +151,30 @@ src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o: \
  /usr/include/c++/13/bits/exception_ptr.h \
  /usr/include/c++/13/bits/cxxabi_init_exception.h \
  /usr/include/c++/13/typeinfo /usr/include/c++/13/bits/nested_exception.h \
- /usr/include/c++/13/bits/streambuf.tcc /usr/include/boost/config.hpp \
- /usr/include/boost/config/user.hpp \
- /usr/include/boost/config/detail/select_compiler_config.hpp \
- /usr/include/boost/config/compiler/gcc.hpp \
- /usr/include/boost/config/detail/select_stdlib_config.hpp \
+ /usr/include/c++/13/bits/streambuf.tcc \
+ /usr/local/include/boost/config.hpp \
+ /usr/local/include/boost/config/user.hpp \
+ /usr/local/include/boost/config/detail/select_compiler_config.hpp \
+ /usr/local/include/boost/config/compiler/gcc.hpp \
+ /usr/local/include/boost/config/detail/select_stdlib_config.hpp \
  /usr/include/c++/13/version \
- /usr/include/boost/config/stdlib/libstdcpp3.hpp /usr/include/unistd.h \
- /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/local/include/boost/config/stdlib/libstdcpp3.hpp \
+ /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
  /usr/include/x86_64-linux-gnu/bits/confname.h \
  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
  /usr/include/linux/close_range.h \
- /usr/include/boost/config/detail/select_platform_config.hpp \
- /usr/include/boost/config/platform/linux.hpp \
- /usr/include/boost/config/detail/posix_features.hpp \
- /usr/include/boost/config/detail/suffix.hpp \
- /usr/include/boost/config/helper_macros.hpp \
- /usr/include/boost/config/detail/cxx_composite.hpp \
- /usr/include/boost/detail/workaround.hpp \
- /usr/include/boost/config/workaround.hpp \
- /usr/include/boost/core/addressof.hpp /usr/include/c++/13/vector \
+ /usr/local/include/boost/config/detail/select_platform_config.hpp \
+ /usr/local/include/boost/config/platform/linux.hpp \
+ /usr/local/include/boost/config/detail/posix_features.hpp \
+ /usr/local/include/boost/config/detail/suffix.hpp \
+ /usr/local/include/boost/config/helper_macros.hpp \
+ /usr/local/include/boost/config/detail/cxx_composite.hpp \
+ /usr/local/include/boost/detail/workaround.hpp \
+ /usr/local/include/boost/config/workaround.hpp \
+ /usr/local/include/boost/core/addressof.hpp /usr/include/c++/13/vector \
  /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
@@ -183,7 +185,7 @@ src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o: \
  /usr/include/c++/13/bits/stl_map.h \
  /usr/include/c++/13/bits/stl_multimap.h \
  /usr/include/c++/13/bits/erase_if.h \
- /home/jimmy/jimmy/chat/chatserver/include/server/chatservice.hpp \
+ /home/jimmy/jimmy/chat/include/server/chatservice.hpp \
  /usr/include/c++/13/unordered_map \
  /usr/include/c++/13/bits/unordered_map.h \
  /usr/include/c++/13/bits/hashtable.h \
@@ -235,47 +237,25 @@ src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o: \
  /usr/include/x86_64-linux-gnu/asm/sockios.h \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
- /usr/include/x86_64-linux-gnu/bits/in.h /usr/include/boost/any.hpp \
- /usr/include/boost/any/bad_any_cast.hpp /usr/include/boost/any/fwd.hpp \
- /usr/include/boost/config/pragma_message.hpp \
- /usr/include/boost/type_traits/alignment_of.hpp \
- /usr/include/boost/type_traits/intrinsics.hpp \
- /usr/include/boost/type_traits/detail/config.hpp \
- /usr/include/boost/version.hpp \
- /usr/include/boost/type_traits/integral_constant.hpp \
- /usr/include/boost/any/detail/placeholder.hpp \
- /usr/include/boost/type_index.hpp \
- /usr/include/boost/type_index/stl_type_index.hpp \
- /usr/include/boost/type_index/type_index_facade.hpp \
- /usr/include/boost/container_hash/hash_fwd.hpp \
- /usr/include/c++/13/cstring /usr/include/boost/static_assert.hpp \
- /usr/include/boost/throw_exception.hpp \
- /usr/include/boost/exception/exception.hpp \
- /usr/include/boost/assert/source_location.hpp \
- /usr/include/boost/current_function.hpp /usr/include/boost/cstdint.hpp \
+ /usr/include/x86_64-linux-gnu/bits/in.h /usr/local/include/boost/any.hpp \
+ /usr/local/include/boost/any/detail/config.hpp \
+ /usr/local/include/boost/throw_exception.hpp \
+ /usr/local/include/boost/exception/exception.hpp \
+ /usr/local/include/boost/assert/source_location.hpp \
+ /usr/local/include/boost/cstdint.hpp /usr/include/c++/13/cstring \
  /usr/include/c++/13/utility /usr/include/c++/13/bits/stl_relops.h \
- /usr/include/boost/core/demangle.hpp /usr/include/c++/13/cxxabi.h \
+ /usr/local/include/boost/type_index.hpp \
+ /usr/local/include/boost/type_index/detail/config.hpp \
+ /usr/local/include/boost/type_index/stl_type_index.hpp \
+ /usr/local/include/boost/type_index/type_index_facade.hpp \
+ /usr/local/include/boost/container_hash/hash_fwd.hpp \
+ /usr/local/include/boost/core/demangle.hpp /usr/include/c++/13/cxxabi.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/cxxabi_tweaks.h \
- /usr/include/boost/type_traits/conditional.hpp \
- /usr/include/boost/type_traits/is_const.hpp \
- /usr/include/boost/type_traits/is_reference.hpp \
- /usr/include/boost/type_traits/is_lvalue_reference.hpp \
- /usr/include/boost/type_traits/is_rvalue_reference.hpp \
- /usr/include/boost/type_traits/is_volatile.hpp \
- /usr/include/boost/type_traits/remove_cv.hpp \
- /usr/include/boost/type_traits/remove_reference.hpp \
- /usr/include/boost/type_traits/decay.hpp \
- /usr/include/boost/type_traits/is_array.hpp \
- /usr/include/boost/type_traits/is_function.hpp \
- /usr/include/boost/type_traits/detail/is_function_cxx_11.hpp \
- /usr/include/boost/type_traits/remove_bounds.hpp \
- /usr/include/boost/type_traits/remove_extent.hpp \
- /usr/include/boost/type_traits/add_pointer.hpp \
- /usr/include/boost/type_traits/add_reference.hpp \
- /usr/include/boost/core/enable_if.hpp \
- /usr/include/boost/type_traits/is_same.hpp \
- /home/jimmy/jimmy/chat/chatserver/thirdparty/json.hpp \
- /usr/include/c++/13/numeric /usr/include/c++/13/bits/stl_numeric.h \
+ /usr/local/include/boost/any/bad_any_cast.hpp \
+ /usr/local/include/boost/any/fwd.hpp \
+ /usr/local/include/boost/any/detail/placeholder.hpp \
+ /home/jimmy/jimmy/chat/thirdparty/json.hpp /usr/include/c++/13/numeric \
+ /usr/include/c++/13/bits/stl_numeric.h \
  /usr/include/c++/13/pstl/glue_numeric_defs.h \
  /usr/include/c++/13/forward_list /usr/include/c++/13/bits/forward_list.h \
  /usr/include/c++/13/bits/forward_list.tcc /usr/include/c++/13/valarray \
@@ -332,11 +312,11 @@ src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o: \
  /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/codecvt \
  /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
  /usr/include/c++/13/any \
- /home/jimmy/jimmy/chat/chatserver/include/server/model/usermodel.hpp \
- /home/jimmy/jimmy/chat/chatserver/include/server/model/user.hpp \
- /home/jimmy/jimmy/chat/chatserver/include/server/model/offlinemessagemodel.hpp \
- /home/jimmy/jimmy/chat/chatserver/include/server/model/friendmodel.hpp \
- /home/jimmy/jimmy/chat/chatserver/include/server/model/groupmodel.hpp \
- /home/jimmy/jimmy/chat/chatserver/include/server/model/group.hpp \
- /home/jimmy/jimmy/chat/chatserver/include/server/model/groupuser.hpp \
- /home/jimmy/jimmy/chat/chatserver/include/public.hpp
+ /home/jimmy/jimmy/chat/include/server/model/usermodel.hpp \
+ /home/jimmy/jimmy/chat/include/server/model/user.hpp \
+ /home/jimmy/jimmy/chat/include/server/model/offlinemessagemodel.hpp \
+ /home/jimmy/jimmy/chat/include/server/model/friendmodel.hpp \
+ /home/jimmy/jimmy/chat/include/server/model/groupmodel.hpp \
+ /home/jimmy/jimmy/chat/include/server/model/group.hpp \
+ /home/jimmy/jimmy/chat/include/server/model/groupuser.hpp \
+ /home/jimmy/jimmy/chat/include/public.hpp

@@ -32,6 +32,8 @@ void showCurrentUserData();
 void readTaskHandler(int clientfd);
 //获取系统时间（聊天信息需要添加时间信息）
 string getCurrentTime();
+//控制主菜单页面程序
+bool isMainMenuRunning = false;
 //主聊天页面程序
 void mainMenu(int clientfd);
 
@@ -136,6 +138,8 @@ int main(int argc, char **argv)
                                 g_currentUserFriendList.push_back(user);
                             }
                         }
+                        
+
 
                         if (responsejs.contains("groups"))
                         {
@@ -165,7 +169,7 @@ int main(int argc, char **argv)
                         }
 
                         showCurrentUserData();
-
+                        
                         //显示当前用户的离线消息
                         if (responsejs.contains("offlinemsg"))
                         {
@@ -179,18 +183,28 @@ int main(int argc, char **argv)
                                     cout<<js["time"].get<string>()<<"["<<js["id"]<<"]"<<js["name"].get<string>()
                                     <<"said:"<<js["msg"].get<string>()<<endl;
                                 }
+                                else if(GROUP_CHAT_MSG == msgtype)  // 明确判断群聊消息
+                                {
+                                    cout << "群消息{" << js["groupid"] << "}:" << js["time"].get<string>() 
+                                        << "[" << js["id"] << "]" << js["name"].get<string>()
+                                        << " said: " << js["msg"].get<string>() << endl;
+                                }
                                 else
                                 {
-                                    cout<<"群消息{"<<js["groupid"]<<"}:"<<js["time"].get<string>()<<"["<<js["id"]<<"]"<<js["name"].get<string>()
-                                    <<"said:"<<js["msg"].get<string>()<<endl;
+                                    cout << "未知类型离线消息: " << js.dump() << endl;
                                 }
                             }
                         }
                         
-                        //登录成功 启动接收线程负责接收数据
-                        std::thread readTask(readTaskHandler, clientfd);//pthread_create
-                        readTask.detach();//pthread_detach
-
+                        //登录成功 启动接收线程负责接收数据,该线程只启动一次
+                        static int readthreadnumber=0;
+                        if(readthreadnumber==0)
+                        {
+                            std::thread readTask(readTaskHandler, clientfd);//pthread_create
+                            readTask.detach();//pthread_detach
+                            readthreadnumber++;
+                        }
+                        isMainMenuRunning = true;
                         mainMenu(clientfd);  // 进入主菜单
                     }
                 }
@@ -281,9 +295,14 @@ void readTaskHandler(int clientfd)
         }
         else if(GROUP_CHAT_MSG == msgtype)
         {
-            cout<<"群消息{"<<js["groupid"]<<"}:"<<js["time"].get<string>()<<"["<<js["id"]<<"]"<<js["name"].get<string>()
-            <<"said:"<<js["msg"].get<string>()<<endl;
-            continue;
+            cout << "群消息[" << js["groupid"] << "]:" << js["time"].get<string>() 
+                 << "[" << js["id"] << "]" << js["name"].get<string>()
+                 << " said: " << js["msg"].get<string>() << endl;
+        }
+        else
+        {
+            // 添加默认处理，避免消息丢失
+            cout << "收到系统消息[type=" << msgtype << "]: " << js.dump() << endl;
         }
     }
 }
@@ -321,17 +340,7 @@ void showCurrentUserData()
     cout << "=====================获取系统时间(聊天信息需要添加时间信息)=====================" << endl;
 }
 
-string getCurrentTime()
-{
-    // 获取当前时间的实现代码
-    auto tt = std::chrono::system_clock::to_time_t(chrono::system_clock::now());
-    struct tm *ptm = localtime(&tt);
-    char date[60]={0};
-    sprintf(date,"%d-%02d-%02d %02d:%02d:%02d",
-    (int)ptm->tm_year +1900,(int)ptm->tm_mon+1,(int)ptm->tm_mday,
-    (int)ptm->tm_hour,(int)ptm->tm_min,(int)ptm->tm_sec);
-    return string(date);
-}
+
 
 // 命令处理函数声明
 void help(int fd = 0,string str = "");
@@ -369,7 +378,7 @@ void mainMenu(int clientfd)
     help();
 
     char buffer[1024] = {0};
-    for (;;) {
+    while (isMainMenuRunning) {
         cin.getline(buffer, 1024);
         string commandbuf(buffer);
         string command; // 存储命令
@@ -480,7 +489,7 @@ void addgroup(int clientfd, string str)
 {
     int groupid = atoi(str.c_str());
     json js;
-    js["msgid"] = ADD_FRIEND_MSG;
+    js["msgid"] = ADD_GROUP_MSG;
     js["id"] = g_currentUser.getId();
     js["groupid"] = groupid;
     string buffer = js.dump();
@@ -518,7 +527,32 @@ void groupchat(int clientfd, string str)
         cerr<<"send groupchat error ->"<<buffer<<endl;
     }
 }
-void loginout(int, string)
+void loginout(int clientfd, string str)
 {
-    
+    json js;
+    js["msgid"] = LOGINOUT_MSG;
+    js["id"] = g_currentUser.getId();
+    string buffer = js.dump();
+
+    int len = send(clientfd,buffer.c_str(),strlen(buffer.c_str())+1,0);
+    if(len == -1)
+    {
+        cerr<<"send loginout msg error"<<buffer<<endl;
+    }
+    else
+    {
+        isMainMenuRunning = false; // 停止主菜单循环
+    }
+}
+
+string getCurrentTime()
+{
+    // 获取当前时间的实现代码
+    auto tt = std::chrono::system_clock::to_time_t(chrono::system_clock::now());
+    struct tm *ptm = localtime(&tt);
+    char date[60]={0};
+    sprintf(date,"%d-%02d-%02d %02d:%02d:%02d",
+    (int)ptm->tm_year +1900,(int)ptm->tm_mon+1,(int)ptm->tm_mday,
+    (int)ptm->tm_hour,(int)ptm->tm_min,(int)ptm->tm_sec);
+    return string(date);
 }

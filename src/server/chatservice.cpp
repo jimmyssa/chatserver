@@ -24,9 +24,13 @@ ChatService* ChatService::instance()
 ChatService::ChatService()
 {
     _msgHandlerMap.insert({LOGIN_MSG, std::bind(&ChatService::login, this, _1, _2, _3)});
+    _msgHandlerMap.insert({LOGINOUT_MSG, std::bind(&ChatService::loginout, this, _1, _2, _3)});
     _msgHandlerMap.insert({REG_MSG, std::bind(&ChatService::reg, this, _1, _2, _3)});
     _msgHandlerMap.insert({ONE_CHAT_MSG, std::bind(&ChatService::oneChat, this, _1, _2, _3)});
     _msgHandlerMap.insert({ADD_FRIEND_MSG, std::bind(&ChatService::addFriend, this, _1, _2, _3)});
+    _msgHandlerMap.insert({CREATE_GROUP_MSG, std::bind(&ChatService::createGroup, this, _1, _2, _3)});
+    _msgHandlerMap.insert({ADD_GROUP_MSG, std::bind(&ChatService::addGroup, this, _1, _2, _3)});
+    _msgHandlerMap.insert({GROUP_CHAT_MSG, std::bind(&ChatService::groupChat, this, _1, _2, _3)});
 }
 
 //服务器异常，业务重置方法
@@ -115,6 +119,47 @@ void ChatService::login(const TcpConnectionPtr &conn, json &js, Timestamp time)
                 response["friends"]=vec2;
             }
 
+            vector<Group> groups = _groupModel.queryGroups(id);
+            if (!groups.empty()) 
+            {
+                vector<string> groupsJson;
+                for (Group &group : groups) 
+                {
+                    json grpjs;
+                    grpjs["id"] = group.getId();
+                    grpjs["groupname"] = group.getName();
+                    grpjs["groupdesc"] = group.getDesc();
+                    
+                    // ========== 关键修改：添加群组成员信息 ==========
+                    // 查询该群组的成员
+                    vector<GroupUser> groupUsers = _groupModel.queryGroupUsers(group.getId());
+                    
+                    if (!groupUsers.empty()) 
+                    {
+                        vector<string> usersJson;
+                        for (GroupUser &guser : groupUsers) 
+                        {
+                            json userjs;
+                            userjs["id"] = guser.getId();
+                            userjs["name"] = guser.getName();
+                            userjs["state"] = guser.getState();
+                            userjs["role"] = guser.getRole();
+                            usersJson.push_back(userjs.dump());
+                        }
+                        grpjs["users"] = usersJson;  // 注意：这里是字符串数组
+                    }
+                    else
+                    {
+                        // 如果没有成员，返回空数组
+                        grpjs["users"] = vector<string>();
+                    }
+                    
+                    groupsJson.push_back(grpjs.dump());  // 将整个群组对象转为字符串
+                }
+                response["groups"] = groupsJson;  // 字符串数组
+            }
+
+            
             conn->send(response.dump());
         }
     }
@@ -156,6 +201,24 @@ void ChatService::reg(const TcpConnectionPtr &conn, json &js, Timestamp time)
         response["errno"]=1;
         conn->send(response.dump());
     }
+}
+//处理注销业务
+void ChatService::loginout(const TcpConnectionPtr &conn,json &js,Timestamp time)
+{
+    int userid = js["id"].get<int>();
+    {
+        lock_guard<mutex> lock(_connMutex);
+        auto it = _userConnMap.find(userid);
+        if(it != _userConnMap.end())
+        {
+            //从map表删除用户的连接信息
+            _userConnMap.erase(it);
+        }
+    }
+
+    //更新用户的状态信息
+    User user(userid,"","", "offline");
+    _userModel.updateState(user);
 }
 
 //处理客户端异常退出
@@ -246,7 +309,7 @@ void ChatService::groupChat(const TcpConnectionPtr &conn,json &js,Timestamp time
 {
     int userid=js["id"].get<int>();
     int groupid = js["groupid"].get<int>();
-    vector<int> useridVec = _groupModel.queryGroupUsers(userid,groupid);
+    vector<int> useridVec = _groupModel.queryOtherUsersInGroup(userid,groupid);
     lock_guard<mutex> lock(_connMutex);
     for(int id: useridVec)
     {

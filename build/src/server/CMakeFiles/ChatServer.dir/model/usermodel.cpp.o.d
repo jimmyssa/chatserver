@@ -1,8 +1,8 @@
 src/server/CMakeFiles/ChatServer.dir/model/usermodel.cpp.o: \
- /home/jimmy/jimmy/chat/chatserver/src/server/model/usermodel.cpp \
+ /home/jimmy/jimmy/chat/src/server/model/usermodel.cpp \
  /usr/include/stdc-predef.h \
- /home/jimmy/jimmy/chat/chatserver/include/server/model/usermodel.hpp \
- /home/jimmy/jimmy/chat/chatserver/include/server/model/user.hpp \
+ /home/jimmy/jimmy/chat/include/server/model/usermodel.hpp \
+ /home/jimmy/jimmy/chat/include/server/model/user.hpp \
  /usr/include/c++/13/string /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -117,8 +117,7 @@ src/server/CMakeFiles/ChatServer.dir/model/usermodel.cpp.o: \
  /usr/include/c++/13/bits/memory_resource.h /usr/include/c++/13/cstddef \
  /usr/include/c++/13/bits/uses_allocator.h \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
- /home/jimmy/jimmy/chat/chatserver/include/server/db/db.h \
- /usr/include/mysql/mysql.h \
+ /home/jimmy/jimmy/chat/include/server/db/db.h /usr/include/mysql/mysql.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \

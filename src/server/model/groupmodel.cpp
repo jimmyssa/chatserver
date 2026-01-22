@@ -94,27 +94,59 @@ vector<Group> GroupModel::queryGroups(int userid)
 }
 
 //根据指定的groupid查询群组用户id列表，除userid自己，主要用户群聊业务给群组其它成员群发消息
-vector<int> GroupModel::queryGroupUsers(int userid,int groupid)
+vector<GroupUser> GroupModel::queryGroupUsers(int groupid)
 {
-    char sql[1024]={0};
-    sprintf(sql,"select userid from GroupUser where groupid = %d and userid != %d",groupid,userid);
-    vector<int> idVec;
-
+    char sql[1024] = {0};
+    // 查询群组所有成员，包括他们的角色
+    sprintf(sql, 
+        "SELECT u.id, u.name, u.state, gu.grouprole "
+        "FROM User u "
+        "INNER JOIN GroupUser gu ON u.id = gu.userid "
+        "WHERE gu.groupid = %d", 
+        groupid);
+    
+    vector<GroupUser> users;
     MySQL mysql;
-    if(mysql.connect())
+    if (mysql.connect())
     {
-        MYSQL_RES *res=mysql.query(sql);
-        if(res!=nullptr)
+        MYSQL_RES *res = mysql.query(sql);
+        if (res != nullptr)
         {
-            //把userid用户的所有离线消息放入vec中返回
             MYSQL_ROW row;
-            while((row=mysql_fetch_row(res))!=nullptr)
+            while ((row = mysql_fetch_row(res)) != nullptr)
             {
-                idVec.push_back(atoi(row[0]));
-                
+                GroupUser user;
+                user.setId(atoi(row[0]));
+                user.setName(row[1]);
+                user.setState(row[2]);
+                user.setRole(row[3]);  // 重要：包含角色信息
+                users.push_back(user);
             }
             mysql_free_result(res);
-           
+        }
+    }
+    return users;
+}
+
+vector<int> GroupModel::queryOtherUsersInGroup(int groupid, int excludeUserid)
+{
+    char sql[1024] = {0};
+    sprintf(sql, "SELECT userid FROM GroupUser WHERE groupid = %d AND userid != %d", 
+            groupid, excludeUserid);
+    
+    vector<int> idVec;
+    MySQL mysql;
+    if (mysql.connect())
+    {
+        MYSQL_RES *res = mysql.query(sql);
+        if (res != nullptr)
+        {
+            MYSQL_ROW row;
+            while ((row = mysql_fetch_row(res)) != nullptr)
+            {
+                idVec.push_back(atoi(row[0]));
+            }
+            mysql_free_result(res);
         }
     }
     return idVec;

@@ -1,8 +1,7 @@
 src/client/CMakeFiles/ChatClient.dir/main.cpp.o: \
- /home/jimmy/jimmy/chat/chatserver/src/client/main.cpp \
- /usr/include/stdc-predef.h \
- /home/jimmy/jimmy/chat/chatserver/thirdparty/json.hpp \
- /usr/include/c++/13/algorithm /usr/include/c++/13/bits/stl_algobase.h \
+ /home/jimmy/jimmy/chat/src/client/main.cpp /usr/include/stdc-predef.h \
+ /home/jimmy/jimmy/chat/thirdparty/json.hpp /usr/include/c++/13/algorithm \
+ /usr/include/c++/13/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -270,8 +269,8 @@ src/client/CMakeFiles/ChatClient.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
  /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/bits/in.h \
  /usr/include/arpa/inet.h \
- /home/jimmy/jimmy/chat/chatserver/include/server/model/group.hpp \
- /home/jimmy/jimmy/chat/chatserver/include/server/model/groupuser.hpp \
- /home/jimmy/jimmy/chat/chatserver/include/server/model/user.hpp \
- /home/jimmy/jimmy/chat/chatserver/include/server/model/user.hpp \
- /home/jimmy/jimmy/chat/chatserver/include/public.hpp
+ /home/jimmy/jimmy/chat/include/server/model/group.hpp \
+ /home/jimmy/jimmy/chat/include/server/model/groupuser.hpp \
+ /home/jimmy/jimmy/chat/include/server/model/user.hpp \
+ /home/jimmy/jimmy/chat/include/server/model/user.hpp \
+ /home/jimmy/jimmy/chat/include/public.hpp

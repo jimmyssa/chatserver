@@ -5,13 +5,21 @@
 //存储用户的离线消息
 void OfflineMsgModel::insert(int userid,string msg)
 {
-    //1.组装sql语句
-    char sql[1024]={0};
-    sprintf(sql,"insert into OfflineMessage values('%d','%s')",userid,msg.c_str());
-
     MySQL mysql;
-    if(mysql.connect())
+    if (mysql.connect())
     {
+        // 转义特殊字符
+        char escaped_msg[msg.length() * 2 + 1];
+        mysql_real_escape_string(mysql.getConnection(), 
+                                escaped_msg, 
+                                msg.c_str(), 
+                                msg.length());
+        
+        char sql[1024];
+        snprintf(sql, sizeof(sql), 
+                "INSERT INTO OfflineMessage(userid, message) VALUES(%d, '%s')", 
+                userid, escaped_msg);
+        
         mysql.update(sql);
     }
 }
