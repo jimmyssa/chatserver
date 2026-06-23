@@ -10,6 +10,7 @@
 #include"offlinemessagemodel.hpp"
 #include"friendmodel.hpp"
 #include"groupmodel.hpp"
+#include"redis.hpp"
 
 using namespace std;
 using json=nlohmann::json;
@@ -46,6 +47,8 @@ public:
     void reset();
     //处理客户端异常退出
     void clientCloseException(const TcpConnectionPtr &conn);
+    //从redis消息队列中获取订阅的消息
+    void handleRedisSubscribeMessage(int channel, string message);
 private:
     ChatService();
     //存储消息id和其对应的业务处理方法
@@ -62,6 +65,9 @@ private:
     OfflineMsgModel _offlineMsgModel;
     FriendModel _friendModel;
     GroupModel _groupModel;
+
+    //Redis操作对象
+    Redis _redis;
 };
 
 

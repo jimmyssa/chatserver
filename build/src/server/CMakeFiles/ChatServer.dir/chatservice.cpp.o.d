@@ -319,4 +319,10 @@ src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o: \
  /home/jimmy/jimmy/chat/include/server/model/groupmodel.hpp \
  /home/jimmy/jimmy/chat/include/server/model/group.hpp \
  /home/jimmy/jimmy/chat/include/server/model/groupuser.hpp \
+ /home/jimmy/jimmy/chat/include/server/redis/redis.hpp \
+ /usr/local/include/hiredis/hiredis.h /usr/local/include/hiredis/read.h \
+ /usr/include/x86_64-linux-gnu/sys/time.h \
+ /usr/local/include/hiredis/sds.h /usr/local/include/hiredis/alloc.h \
+ /usr/include/c++/13/thread /usr/include/c++/13/bits/std_thread.h \
+ /usr/include/c++/13/bits/this_thread_sleep.h \
  /home/jimmy/jimmy/chat/include/public.hpp

@@ -2,6 +2,8 @@
 aux_source_directory(. SRC_LIST)
 aux_source_directory(./db DB_LIST)
 aux_source_directory(./model MODEL_LIST)
-add_executable(ChatServer ${SRC_LIST} ${DB_LIST} ${MODEL_LIST})
+aux_source_directory(./redis REDIS_LIST)
+
+add_executable(ChatServer ${SRC_LIST} ${DB_LIST} ${MODEL_LIST} ${REDIS_LIST})
 #指定可执行文件所依赖的库
-target_link_libraries(ChatServer pthread muduo_net muduo_base mysqlclient)
+target_link_libraries(ChatServer pthread muduo_net muduo_base hiredis mysqlclient)
